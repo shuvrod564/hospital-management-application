@@ -1,0 +1,112 @@
+[
+    {
+        "Id": "PRE2209",
+        "Name": "Aaliyah",
+        "Class": "10",
+        "Gender": "Female",
+        "Subject": "Mathematics",
+        "Section": "A",
+        "Number": "097 3584 5870",
+        "Address": "911 Deer Ridge Drive,USA",
+        "Image": "avatar-02.jpg"
+    },
+    {
+        "Id": "PRE2213",
+        "Name": "Malynne",
+        "Class": "8",
+        "Gender": "Female",
+        "Subject": "Physics",
+        "Section": "A",
+        "Number": "242 362 3100",
+        "Address": "Bacardi Rd P.O. Box N-4880, New Providence",
+        "Image": "avatar-03.jpg"
+    },
+    {
+        "Id": "PRE2143",
+        "Name": "Levell Scott",
+        "Class": "10",
+        "Gender": "Male",
+        "Subject": "Science",
+        "Section": "B",
+        "Number": "026 7318 4366",
+        "Address": "P.O. Box: 41, Gaborone",
+        "Image": "avatar-04.jpg"
+    },
+    {
+        "Id": "PRE2431",
+        "Name": "Minnie",
+        "Class": "11",
+        "Gender": "Male",
+        "Subject": "History",
+        "Section": "C",
+        "Number": "952 512 4909",
+        "Address": "4771  Oral Lake Road, Golden Valley",
+        "Image": "avatar-05.jpg"
+    },
+    {
+        "Id": "PRE1534",
+        "Name": "Lois A",
+        "Class": "10",
+        "Gender": "Female",
+        "Subject": "English",
+        "Section": "B",
+        "Number": "413 289 1314",
+        "Address": "2844 Leverton Cove Road, Palmer",
+        "Image": "avatar-06.jpg"
+    },
+    {
+        "Id": "PRE2153",
+        "Name": "Calvin",
+        "Class": "9",
+        "Gender": "Male",
+        "Subject": "Mathematics",
+        "Section": "C",
+        "Number": "701 753 3810",
+        "Address": "1900  Hidden Meadow Drive, Crete",
+        "Image": "avatar-07.jpg"
+    },
+    {
+        "Id": "PRE1434",
+        "Name": "Vincent",
+        "Class": "10",
+        "Gender": "Male",
+        "Subject": "Mathematics",
+        "Section": "C",
+        "Number": "402 221 7523",
+        "Address": "3979  Ashwood Drive, Omaha",
+        "Image": "avatar-08.jpg"
+    },
+    {
+        "Id": "PRE2345",
+        "Name": "Kozma  Tatari",
+        "Class": "9",
+        "Gender": "Female",
+        "Subject": "Science",
+        "Section": "A",
+        "Number": "04 2239 968",
+        "Address": "Rruga E Kavajes, Condor Center, Tirana",
+        "Image": "avatar-09.jpg"
+    },
+    {
+        "Id": "PRE2365",
+        "Name": "John Chambers",
+        "Class": "11",
+        "Gender": "Male",
+        "Subject": "Botony",
+        "Section": "B",
+        "Number": "870 663 2334",
+        "Address": "4667 Sunset Drive, Pine Bluff",
+        "Image": "avatar-10.jpg"
+    },
+    {
+        "Id": "PRE1234",
+        "Name": "Nathan Humphries",
+        "Class": "10",
+        "Gender": "Male",
+        "Subject": "Biology",
+        "Section": "A",
+        "Number": "077 3499 9959",
+        "Address": "86 Lamphey Road, Thelnetham",
+        "Image": "avatar-11.jpg"
+    }
+]

@@ -1,0 +1,92 @@
+[
+	{
+		"ID": "PRE2209",
+		"FeesName": "Exam Fees",
+		"Class": "10",
+		"Amount": "$345",
+		"StartDate": "23 Apr 2020",
+		"EndDate": "28 Apr 2020",
+		"Action": ""
+	},
+	{
+		"ID": "PRE2213",
+		"FeesName": "Exam Fees",
+		"Class": "1",
+		"Amount": "$255",
+		"StartDate": "23 Apr 2020",
+		"EndDate": "28 Apr 2020",
+		"Action": ""
+	},
+	{
+		"ID": "PRE2143",
+		"FeesName": "Exam Fees",
+		"Class": "9",
+		"Amount": "$545",
+		"StartDate": "23 Apr 2020",
+		"EndDate": "28 Apr 2020",
+		"Action": ""
+	},
+	{
+		"ID": "PRE2431",
+		"FeesName": "Sports Day Fees",
+		"Class": "8",
+		"Amount": "$234",
+		"StartDate": "23 Apr 2020",
+		"EndDate": "28 Apr 2020",
+		"Action": ""
+	},
+	{
+		"ID": "PRE1534",
+		"FeesName": "Exam Fees",
+		"Class": "7",
+		"Amount": "$265",
+		"StartDate": "23 Apr 2020",
+		"EndDate": "28 Apr 2020",
+		"Action": ""
+	},
+	{
+		"ID": "PRE2153",
+		"FeesName": "Sports Day Fees",
+		"Class": "2",
+		"Amount": "$334",
+		"StartDate": "23 Apr 2020",
+		"EndDate": "28 Apr 2020",
+		"Action": ""
+	},
+	{
+		"ID": "PRE1434",
+		"FeesName": "Sports Day Fees",
+		"Class": "6",
+		"Amount": "$341",
+		"StartDate": "23 Apr 2020",
+		"EndDate": "28 Apr 2020",
+		"Action": ""
+	},
+	{
+		"ID": "PRE2345",
+		"FeesName": "Exam Fees",
+		"Class": "12",
+		"Amount": "$365",
+		"StartDate": "23 Apr 2020",
+		"EndDate": "28 Apr 2020",
+		"Action": ""
+	},
+	{
+		"ID": "PRE2365",
+		"FeesName": "Annual Day Fees",
+		"Class": "11",
+		"Amount": "$83",
+		"StartDate": "23 Apr 2020",
+		"EndDate": "28 Apr 2020",
+		"Action": ""
+	},
+	{
+		"ID": "PRE1234",
+		"FeesName": "Class Test Fees",
+		"Class": "5",
+		"Amount": "$242",
+		"StartDate": "23 Apr 2020",
+		"EndDate": "28 Apr 2020",
+		"Action": ""
+	}
+]

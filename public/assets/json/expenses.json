@@ -1,0 +1,74 @@
+[
+	{
+		"ID": "PRE2209",
+		"ItemName": "Chair",
+		"ItemQuality": "6",
+		"Amount": "$120",
+		"PurchaseSource": "Abc Shop",
+		"PurchaseDate": "17 Aug 2020",
+		"PurchaseBy": "Lois"
+	},
+	{
+		"ID": "PRE2213",
+		"ItemName": "Table",
+		"ItemQuality": "2",
+		"Amount": "$56",
+		"PurchaseSource": "Online",
+		"PurchaseDate": "05 Aug 2020",
+		"PurchaseBy": "Malynne"
+	},
+	{
+		"ID": "PRE2143",
+		"ItemName": "Desk",
+		"ItemQuality": "6",
+		"Amount": "$378",
+		"PurchaseSource": "Take Away",
+		"PurchaseDate": "04 Sept 2020",
+		"PurchaseBy": "Levell Scott"
+	},
+	{
+		"ID": "PRE2431",
+		"ItemName": "Projector",
+		"ItemQuality": "1",
+		"Amount": "$246",
+		"PurchaseSource": "Real Shop",
+		"PurchaseDate": "17 Sept 2020",
+		"PurchaseBy": "Minnie"
+	},
+	{
+		"ID": "PRE1534",
+		"ItemName": "Hard disk",
+		"ItemQuality": "2",
+		"Amount": "$560",
+		"PurchaseSource": "Sony Center",
+		"PurchaseDate": "02 Oct 2020",
+		"PurchaseBy": "Lois A"
+	},
+	{
+		"ID": "PRE2153",
+		"ItemName": "Note books",
+		"ItemQuality": "100",
+		"Amount": "$236",
+		"PurchaseSource": "DJ Stationary",
+		"PurchaseDate": "28 Oct 2020",
+		"PurchaseBy": "Calvin"
+	},
+	{
+		"ID": "PRE1252",
+		"ItemName": "Water Bottle",
+		"ItemQuality": "267",
+		"Amount": "$237",
+		"PurchaseSource": "DJ Stationary",
+		"PurchaseDate": "17 Oct 2020",
+		"PurchaseBy": "Joe Kelley"
+	},
+	{
+		"ID": "PRE1536",
+		"ItemName": "Hard disk",
+		"ItemQuality": "3",
+		"Amount": "$560",
+		"PurchaseSource": "music Center",
+		"PurchaseDate": "02 Oct 2020",
+		"PurchaseBy": "Lois A"
+	}
+]

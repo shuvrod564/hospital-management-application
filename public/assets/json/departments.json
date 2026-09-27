@@ -1,0 +1,44 @@
+[
+    {
+        "Id":"PRE2209",
+        "Name":"Computer Science Engg",
+        "HOD":"Aaliyah",
+        "Year":"1995",
+        "Students":"180"
+    },
+    {
+        "Id":"PRE2213",
+        "Name":"Mechanical Engg",
+        "HOD":"Malynne",
+        "Year":"1999",
+        "Students":"240"
+    },
+    {
+        "Id":"PRE2143",
+        "Name":"Electrical Engg",
+        "HOD":"Levell Scott",
+        "Year":"1994",
+        "Students":"163"
+    },
+    {
+        "Id":"PRE2431",
+        "Name":"Civil Engg",
+        "HOD":"Minnie",
+        "Year":"2000",
+        "Students":"195"
+    },
+    {
+        "Id":"PRE1534",
+        "Name":"MCA",
+        "HOD":"Lois A",
+        "Year":"1992",
+        "Students":"200"
+    },
+    {
+        "Id":"PRE2153",
+        "Name":"BCA",
+        "HOD":"Calvin",
+        "Year":"1992",
+        "Students":"152"
+    }
+]

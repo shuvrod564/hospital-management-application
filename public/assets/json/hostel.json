@@ -1,0 +1,74 @@
+[
+	{
+		"Block": "A Block",
+		"RoomNo": "101",
+		"RoomType": "Medium",
+		"NoofBeds": "6",
+		"CostperBed": "$10",
+		"Availability": "Full",
+		"Class":"badge badge-danger"
+	},
+	{
+		"Block": "A Block",
+		"RoomNo": "101",
+		"RoomType": "Medium",
+		"NoofBeds": "6",
+		"CostperBed": "$10",
+		"Availability": "Available",
+		"Class":"badge badge-success"
+	},
+	{
+		"Block": "A Block",
+		"RoomNo": "102",
+		"RoomType": "Medium",
+		"NoofBeds": "6",
+		"CostperBed": "$10",
+		"Availability": "Full",
+		"Class":"badge badge-danger"
+	},
+	{
+		"Block": "B Block",
+		"RoomNo": "104",
+		"RoomType": "Big",
+		"NoofBeds": "8",
+		"CostperBed": "$10",
+		"Availability": "Full",
+		"Class":"badge badge-danger"
+	},
+	{
+		"Block": "A Block",
+		"RoomNo": "107",
+		"RoomType": "Medium",
+		"NoofBeds": "6",
+		"CostperBed": "$10",
+		"Availability": "Available",
+		"Class":"badge badge-success"
+	},
+	{
+		"Block": "A Block",
+		"RoomNo": "108",
+		"RoomType": "Medium",
+		"NoofBeds": "6",
+		"CostperBed": "$10",
+		"Availability": "Available",
+		"Class":"badge badge-success"
+	},
+	{
+		"Block": "B Block",
+		"RoomNo": "102",
+		"RoomType": "Medium",
+		"NoofBeds": "6",
+		"CostperBed": "$10",
+		"Availability": "2 Available",
+		"Class":"badge badge-warning"
+	},
+	{
+		"Block": "B Block",
+		"RoomNo": "107",
+		"RoomType": "Small",
+		"NoofBeds": "6",
+		"CostperBed": "$10",
+		"Availability": "Available",
+		"Class":"badge badge-success"
+	}
+]
