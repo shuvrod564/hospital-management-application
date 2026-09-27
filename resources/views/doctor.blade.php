@@ -509,10 +509,10 @@
                 'name' =>  $doctor->name,
                 'specialty' => $meta['department'] ?? 'General Physician',
                 'sub' => $doctor['sub'] ?? 'Doctor',
-                'rating' => (float) ($doctor['rating'] ?? 0),
-                'experience' => (int) ($doctor['experience'] ?? 0),
-                'fee' => (float) ($doctor['consultation_fee'] ?? 0),
-                'location' => $doctor['location'] ?? 'Not specified',
+                'rating' => (float) ($meta['mock_rating'] ?? 0),
+                'experience' => (int) ($meta['years_in_practice'] ?? 0),
+                'fee' => (float) ($meta['initial_fee'] ?? 0),
+                'location' => $meta['chamber_address'] ?? 'Not specified',
                 'gender' => $doctor?->gender ?? '',
                 'available' => (bool) ($doctor['available'] ?? false),
                 'video' => (bool) ($doctor['video_consult'] ?? false),
@@ -523,7 +523,7 @@
             ];
         })->values();
 
-        dd($doctorsList);
+        //dd($doctorsList);
     @endphp
 
     <script>
@@ -691,6 +691,7 @@
             grid.className = isGrid ? 'row g-4' : 'row g-4';
             // In list view, make single column
             const colClass = isGrid ? 'col-md-6' : 'col-12';
+            
 
             grid.innerHTML = pageDocs.map(d => `
                 <div class="${colClass}">
@@ -866,6 +867,24 @@
 
         // ===== INIT =====
         renderDoctors();
+
+
+        // ==== set book now btn events
+        document.addEventListener('click', function (e) {
+            if (e.target.closest('.btn-book-doc')) {
+                e.preventDefault();
+                
+                const isLoggedIn = {{ auth()->check() ? 'true' : 'false' }};
+                const doctorId = e.target.closest('.btn-book-doc').dataset.id;
+
+                if (isLoggedIn) {
+                    window.location.href = `{{ route('user.appointments.create') }}?doctor_id=${doctorId}`;
+                } else {
+                    // Redirect to login with intended redirect back after authentication
+                    window.location.href = `{{ route('login') }}?redirect_to=` + encodeURIComponent(`{{ route('user.appointments.create') }}?doctor_id=${doctorId}`);
+                }
+            }
+        });
     </script>
 </body>
 </html>

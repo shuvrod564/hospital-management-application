@@ -11,15 +11,15 @@ use App\Http\Controllers\Doctor\ProfileController as DoctorProfileController;
 use App\Http\Controllers\Doctor\DashboardController as DoctorDashboardController;
 use App\Http\Controllers\Doctor\PatientController as DoctorPatientController;
 use App\Http\Controllers\Doctor\FindDoctorController;
+use App\Http\Controllers\FrontendController;
 
  
 
 
 
-
-Route::get('/', function () {
-    return view('welcome');
-})->name('frontend.home');
+ 
+Route::get('/', [FrontendController::class, 'index'])
+    ->name('frontend.home');
 Route::get('/doctors', [FindDoctorController::class, 'index'])
     ->name('frontend.doctors');
 Route::get('/about-us', function () {
@@ -38,6 +38,20 @@ Route::get('/contact-us', function () {
 | DOCTOR ROUTES (/doctor/**)
 |--------------------------------------------------------------------------
 */
+Route::middleware(['auth', 'role:doctor'])->prefix('doctor')->name('doctor.')->group(function () {
+   // --- Inside the 'doctor' prefix group ---
+    Route::get('/appointments', [DoctorAppointmentController::class, 'index'])->name('appointments.index');
+    Route::post('/appointments/{id}/status', [DoctorAppointmentController::class, 'updateStatus'])->name('appointments.updateStatus');
+    Route::get('/appointments/{id}/prescription', [DoctorAppointmentController::class, 'prescription'])->name('appointments.prescription');  
+    Route::post('/appointments/{id}/prescription', [DoctorAppointmentController::class, 'storePrescription'])->name('prescription.store');
+    Route::get('/prescriptions/{id}', [DoctorAppointmentController::class, 'showPrescription'])->name('prescriptions.show');
+
+    Route::get('/patients', [DoctorPatientController::class, 'index'])->name('patients.index');
+    
+    Route::get('/profile', [DoctorProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/manage', [DoctorProfileController::class, 'manage'])->name('profile.manage'); 
+    Route::put('/profile/manage', [DoctorProfileController::class, 'update'])->name('profile.update');
+});
 Route::prefix('doctor')->group(function () {
     Route::get('/login', [DoctorAuthController::class, 'showLoginForm'])->middleware('guest')->name('doctor.login');
     Route::post('/login', [DoctorAuthController::class, 'login'])->middleware('guest')->name('doctor.login.post');
@@ -45,18 +59,7 @@ Route::prefix('doctor')->group(function () {
  
     Route::get('/', [DoctorDashboardController::class, 'index'])->name('doctor.dashboard');
     
-    // --- Inside the 'doctor' prefix group ---
-    Route::get('/appointments', [DoctorAppointmentController::class, 'index'])->name('doctor.appointments.index');
-    Route::post('/appointments/{id}/status', [DoctorAppointmentController::class, 'updateStatus'])->name('doctor.appointments.updateStatus');
-    Route::get('/appointments/{id}/prescription', [DoctorAppointmentController::class, 'prescription'])->name('doctor.appointments.prescription');  
-    Route::post('/appointments/{id}/prescription', [DoctorAppointmentController::class, 'storePrescription'])->name('doctor.prescription.store');
-    Route::get('/prescriptions/{id}', [DoctorAppointmentController::class, 'showPrescription'])->name('doctor.prescriptions.show');
-
-    Route::get('/patients', [DoctorPatientController::class, 'index'])->name('doctor.patients.index');
     
-    Route::get('/profile', [DoctorProfileController::class, 'index'])->name('doctor.profile.index');
-    Route::get('/profile/manage', [DoctorProfileController::class, 'manage'])->name('doctor.profile.manage'); 
-    Route::put('/profile/manage', [DoctorProfileController::class, 'update'])->name('doctor.profile.update');
 });
 
 /*
@@ -67,20 +70,22 @@ Route::prefix('doctor')->group(function () {
 Route::prefix('user')->group(function () {
     Route::get('/login', [PatientAuthController::class, 'showLoginForm'])->middleware('guest')->name('user.login');
     Route::post('/login', [PatientAuthController::class, 'login'])->middleware('guest')->name('user.login.post');
-    Route::post('/logout', [PatientAuthController::class, 'logout'])->middleware('auth')->name('user.logout');
-    
-    Route::get('/', [PatientDashboardController::class, 'index'])->name('user.dashboard');
+    Route::post('/logout', [PatientAuthController::class, 'logout'])->middleware('auth')->name('user.logout'); 
+   
+});
+
+Route::middleware(['auth', 'role:patient'])->prefix('user')->name('user.')->group(function () {
+    Route::get('/', [PatientDashboardController::class, 'index'])->name('dashboard');
     // Route::get('/', function () { return view('patient.dashboard'); })->middleware(['auth', 'patient'])->name('user.dashboard');
 
     // --- Inside the 'user' prefix group ---
-    Route::get('/appointments', [PatientAppointmentController::class, 'index'])->name('user.appointments.index');
-    Route::get('/appointments/create', [PatientAppointmentController::class, 'create'])->name('user.appointments.create');
-    Route::post('/appointments', [PatientAppointmentController::class, 'store'])->name('user.appointments.store');
-    Route::post('/appointments/{id}/cancel', [PatientAppointmentController::class, 'cancel'])->name('user.appointments.cancel');
-    Route::get('/profile', [PatientProfileController::class, 'index'])->name('user.profile.view');
-    Route::get('/profile/manage', [PatientProfileController::class, 'manage'])->name('user.profile.manage');
-    Route::put('/profile/manage', [PatientProfileController::class, 'update'])->name('user.profile.manage');
-   
+    Route::get('/appointments', [PatientAppointmentController::class, 'index'])->name('appointments.index');
+    Route::get('/appointments/create', [PatientAppointmentController::class, 'create'])->name('appointments.create');
+    Route::post('/appointments', [PatientAppointmentController::class, 'store'])->name('appointments.store');
+    Route::post('/appointments/{id}/cancel', [PatientAppointmentController::class, 'cancel'])->name('appointments.cancel');
+    Route::get('/profile', [PatientProfileController::class, 'index'])->name('profile.view');
+    Route::get('/profile/manage', [PatientProfileController::class, 'manage'])->name('profile.manage');
+    Route::put('/profile/manage', [PatientProfileController::class, 'update'])->name('profile.manage');
 });
 
 /*

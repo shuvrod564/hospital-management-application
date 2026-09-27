@@ -128,6 +128,9 @@
                             <li class=" {{ request()->routeIs('admin.users.index') ? 'active' : '' }}">
                                 <a href="{{ route('admin.users.index') }}" class="active"><i class="fas fa-file"></i> <span> Users</span></a> 
                             </li>
+                            <li class=" {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
+                                <a href="{{ route('admin.settings') }}" class="active"><i class="fas fa-file"></i> <span> setiing</span></a> 
+                            </li>
                             
 
                            

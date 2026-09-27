@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminUsersAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController; 
 use App\Http\Controllers\Admin\AppointmentController;  
 use App\Http\Controllers\Admin\UserManagementController; 
+use App\Http\Controllers\Admin\SiteSettingController; 
  
   
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -39,4 +40,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
 
     Route::get('/appointments', [AppointmentController::class, 'index'])->name('admin.appointments');
     Route::delete('/appointments/{id}', [AppointmentController::class, 'destroy'])->name('appointments.destroy');
+
+  
+    Route::get('/settings', [SiteSettingController::class, 'index'])->name('settings');
+    Route::match(['post', 'put'], '/settings', [SiteSettingController::class, 'update'])->name('settings.update');
 });

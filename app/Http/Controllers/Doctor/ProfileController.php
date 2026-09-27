@@ -5,23 +5,34 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
+use App\Models\User;
+use App\Models\SiteSetting;
 
 class ProfileController extends Controller
 {
     public function index()
-    {  
-        // $userId = Auth::id();
-        // dd($userId);
-        // die();
-        $profile = Profile::firstOrCreate(['user_id' => Auth::id()]); 
-        return view('doctor.profile.index', compact('profile'));
+    {   
+        $profile = Profile::firstOrCreate(['user_id' => Auth::id()]);
+        $doctor_email = User::where(['id' => Auth::id()])
+                    ->pluck('email') 
+                    ->first(); 
+                    
+        return view('doctor.profile.index', compact('profile', 'doctor_email'));
     } 
 
     public function manage()
     {  
         // Load existing profile or create a blank one
         $profile = Profile::firstOrCreate(['user_id' => Auth::id()]); 
-        return view('doctor.profile.manage', compact('profile'));
+        $doctor_email = User::where(['id' => Auth::id()])
+                    ->pluck('email') 
+                    ->first(); 
+        // Check spelling: 'specialties' vs 'specialities'
+        $setting = SiteSetting::where('group', 'specialties')->where('key', 'doctor_specialties')->first();
+        $specialities = $setting ? json_decode($setting->value, true) : [];
+ 
+
+        return view('doctor.profile.manage', compact('profile', 'doctor_email', 'specialities'));
     } 
 
 
@@ -90,13 +101,14 @@ class ProfileController extends Controller
             // Basic Extra
             'preferred_name'         => $validated['preferred_name'],
             'age'                    => $validated['age'],
+            'dob'                    => $validated['date_of_birth'],
             'email'                  => $validated['email'], 
             'emergency_name'         => $validated['emergency_name'],
             'emergency_relationship' => $validated['emergency_relationship'],
             'emergency_phone'        => $validated['emergency_phone'],
 
             // Specialties
-            'pediatric_cardiology_fields' => $validated['pediatric_cardiology_fields'],
+            'department' => $validated['pediatric_cardiology_fields'],
             'pediatric_focus_areas'       => $validated['pediatric_focus_areas'],
 
             // Credentials

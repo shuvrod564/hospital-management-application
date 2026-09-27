@@ -28,6 +28,11 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Check if a explicit redirect URL parameter was passed in the request
+        if ($request->has('redirect')) {
+            return redirect()->to($request->input('redirect'));
+        }
+        
         return redirect()->intended(route('user.dashboard'));
     }
 

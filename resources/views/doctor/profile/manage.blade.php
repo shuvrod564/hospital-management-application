@@ -52,7 +52,7 @@
                         <div class="col-md-4">
                             <label class="form-label fw-medium">Date of Birth (DOB) <span class="text-danger">*</span></label>
                             <input type="date" name="date_of_birth" required class="form-control"
-                                value="{{ old('date_of_birth', $profile->date_of_birth) }}">
+                                value="{{ old('date_of_birth', optional($profile->date_of_birth)->format('Y-m-d')) }}">
                         </div>
                         <div class="col-md-4">
                             <label class="form-label fw-medium">Age</label>
@@ -78,7 +78,7 @@
                         <div class="col-md-6">
                             <label class="form-label fw-medium">Email Address <span class="text-danger">*</span></label>
                             <input type="email" name="email" required class="form-control" placeholder="johndoe@example.com"
-                                value="{{ old('email', $profile->getMeta('email')) }}">
+                                value="{{ old('email', $doctor_email) }}">
                         </div>
                         <div class="col-12">
                             <label class="form-label fw-medium">Residential Address <span class="text-danger">*</span></label>
@@ -119,18 +119,14 @@
                             <label class="form-label fw-medium">Primary medical field <span class="text-danger">*</span></label>
                             <select name="pediatric_cardiology_fields" id="pediatric-cardiology-fields" class="form-select">
                                 <option value="" {{ !old('pediatric_cardiology_fields', $profile->getMeta('pediatric_cardiology_fields')) ? 'selected' : '' }}>-- Select a Pediatric Cardiology Subfield --</option>
-                                <option value="congenital_heart_disease" {{ old('pediatric_cardiology_fields', $profile->getMeta('pediatric_cardiology_fields')) == 'congenital_heart_disease' ? 'selected' : '' }}>Congenital Heart Disease (CHD)</option>
-                                <option value="electrophysiology" {{ old('pediatric_cardiology_fields', $profile->getMeta('pediatric_cardiology_fields')) == 'electrophysiology' ? 'selected' : '' }}>Electrophysiology</option>
-                                <option value="interventional_cardiology" {{ old('pediatric_cardiology_fields', $profile->getMeta('pediatric_cardiology_fields')) == 'interventional_cardiology' ? 'selected' : '' }}>Pediatric Interventional Cardiology</option>
-                                <option value="heart_failure_transplant" {{ old('pediatric_cardiology_fields', $profile->getMeta('pediatric_cardiology_fields')) == 'heart_failure_transplant' ? 'selected' : '' }}>Heart Failure &amp; Transplantation</option>
-                                <option value="preventive_cardiology" {{ old('pediatric_cardiology_fields', $profile->getMeta('pediatric_cardiology_fields')) == 'preventive_cardiology' ? 'selected' : '' }}>Preventive Pediatric Cardiology</option>
-                                <option value="fetal_cardiology" {{ old('pediatric_cardiology_fields', $profile->getMeta('pediatric_cardiology_fields')) == 'fetal_cardiology' ? 'selected' : '' }}>Fetal Cardiology</option>
-                                <option value="adult_congenital_heart_disease" {{ old('pediatric_cardiology_fields', $profile->getMeta('pediatric_cardiology_fields')) == 'adult_congenital_heart_disease' ? 'selected' : '' }}>Adult Congenital Heart Disease (ACHD)</option>
+                                @foreach($specialities as $specialty)
+                                <option value="{{ $specialty }}" {{ !old('pediatric_cardiology_fields', $profile->getMeta('pediatric_cardiology_fields')) ? 'selected' : '' }}>{{ $specialty }}</option>
+                                @endforeach 
                             </select> 
                         </div>
                         <div class="col-md-6">
                             <label for="pediatric-focus-areas" class="form-label fw-medium">Specific Focus Area</label>
-                            <select name="pediatric_focus_areas" id="pediatric-focus-areas" class="form-select" disabled>
+                            <select name="pediatric_focus_areas" id="pediatric-focus-area" class="form-select" >
                                 <option value="">-- Select a Subfield First --</option>
                                 {{-- Note: Because this is populated by JS, standard old() won't work perfectly if the list isn't loaded. 
                                     The JS block at the bottom handles re-selecting this on page load. --}}

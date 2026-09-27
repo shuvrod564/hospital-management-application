@@ -79,7 +79,7 @@ class FindDoctorController extends Controller
             return [
                 'id' => $doctor->id,
                 'name' => trim(($profile?->first_name ?? '') . ' ' . ($profile?->last_name ?? '')) ?: $doctor->name,
-                'specialty' => $meta['department'] ?? $meta['specialty'] ?? 'General Physician',
+                'specialty' => $meta['pediatric_cardiology_fields'] ?? $meta['pediatric_focus_areas'] ?? '',
                 'sub' => $meta['designation'] ?? 'Doctor',
                 'rating' => (float) ($meta['rating'] ?? 0),
                 'experience' => (int) ($meta['experience'] ?? 0),

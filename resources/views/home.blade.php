@@ -1238,7 +1238,7 @@
     <!-- ===== NAVBAR ===== -->
     <x-navbar />
 
-
+ 
     <!-- ===== HERO ===== -->
     <section class="hero-section" id="hero">
         <div class="hero-float hero-float-1"></div>
@@ -1282,73 +1282,8 @@
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1 hero-card-wrap">
-                    <form action="{{ route('frontend.doctors') }}"
-      method="GET"
-      class="row g-3 align-items-end">
-
-    {{-- Doctor name --}}
-    <div class="col-lg-4">
-        <label for="filterSearch" class="form-label">
-            Doctor name
-        </label>
-
-        <input
-            type="text"
-            name="search"
-            id="filterSearch"
-            class="form-control"
-            placeholder="Search doctor..."
-            value="{{ request('search') }}"
-        >
-    </div>
-
-    {{-- Specialty --}}
-    <div class="col-lg-3">
-        <label for="filterSpecialty" class="form-label">
-            Specialty
-        </label>
-
-        <select name="specialty"
-                id="filterSpecialty"
-                class="form-select">
-
-            <option value="">All specialties</option>
-
-            @foreach ($specialties as $specialty)
-                <option value="{{ $specialty }}"
-                    @selected(request('specialty') === $specialty)>
-                    {{ $specialty }}
-                </option>
-            @endforeach
-        </select>
-    </div>
-
-    {{-- Location --}}
-    <div class="col-lg-3">
-        <label for="filterLocation" class="form-label">
-            Location
-        </label>
-
-        <input
-            type="text"
-            name="location"
-            id="filterLocation"
-            class="form-control"
-            placeholder="e.g. Dhaka"
-            value="{{ request('location') }}"
-        >
-    </div>
-
-    {{-- Search button --}}
-    <div class="col-lg-2 d-grid">
-        <button type="submit" class="btn btn-primary">
-            <i class="fas fa-search me-1"></i>
-            Find Doctors
-        </button>
-    </div>
-
-</form>
-                    <div class="hero-booking-card">
+                  
+                    <form action="{{ route('frontend.doctors') }}" method="GET" class="hero-booking-card">
                         <h5>Find Your Doctor</h5>
                         <p>Search by name, specialty, or condition</p>
                         <div class="search-input-group">
@@ -1359,6 +1294,9 @@
                             <i class="fas fa-stethoscope"></i>
                             <select id="heroSpecialty">
                                 <option value="">Select Specialty</option>
+                                @foreach($specialties as $item)
+                                    <option option="{{ $item }}">{{ $item }}</option>
+                                @endforeach
                                 <option value="cardiology">Cardiology</option>
                                 <option value="dermatology">Dermatology</option>
                                 <option value="neurology">Neurology</option>
@@ -1396,7 +1334,7 @@
                                 <div class="label">Support</div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
