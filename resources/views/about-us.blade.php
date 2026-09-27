@@ -271,41 +271,7 @@
 <body>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand navbar-brand-text" href="#">Medi<span>Care</span></a>
-            <div class="d-none d-lg-flex align-items-center gap-1 ms-auto">
-                <a href="#" class="nav-link nav-link-custom">Features</a>
-                <a href="#" class="nav-link nav-link-custom">How It Works</a>
-                <a href="#" class="nav-link nav-link-custom">Specialties</a>
-                <a href="#" class="nav-link nav-link-custom">Doctors</a>
-                <a href="#" class="nav-link nav-link-custom">Reviews</a>
-            </div>
-            <div class="d-none d-lg-flex align-items-center gap-2 ms-3">
-                <a href="#" class="nav-link nav-link-custom">Sign In</a>
-                <a href="#" class="btn btn-nav-cta">Book Appointment</a>
-            </div>
-            <button class="d-lg-none border-0 bg-transparent fs-5" id="mobileMenuBtn" aria-label="Open menu">
-                <i class="fas fa-bars" style="color:var(--dark);"></i>
-            </button>
-        </div>
-    </nav>
-    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
-    <div class="mobile-menu-panel" id="mobilePanel">
-        <div class="d-flex justify-content-between align-items-center">
-            <span class="navbar-brand-text" style="font-size:1.25rem;">Medi<span>Care</span></span>
-            <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
-        </div>
-        <ul class="mobile-nav-links">
-            <li><a href="#">Features</a></li>
-            <li><a href="#">How It Works</a></li>
-            <li><a href="#">Specialties</a></li>
-            <li><a href="#">Doctors</a></li>
-            <li><a href="#">Reviews</a></li>
-            <li><a href="#">Sign In</a></li>
-        </ul>
-        <a href="#" class="btn btn-nav-cta w-100 text-center">Book Appointment</a>
-    </div>
+    <x-navbar />
 
     <!-- PAGE HERO -->
     <section class="page-hero">

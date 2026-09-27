@@ -302,41 +302,7 @@
 <body>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand navbar-brand-text" href="#">Medi<span>Care</span></a>
-            <div class="d-none d-lg-flex align-items-center gap-1 ms-auto">
-                <a href="#" class="nav-link nav-link-custom">Features</a>
-                <a href="#" class="nav-link nav-link-custom">How It Works</a>
-                <a href="#" class="nav-link nav-link-custom">Specialties</a>
-                <a href="#" class="nav-link nav-link-custom active">Doctors</a>
-                <a href="#" class="nav-link nav-link-custom">Reviews</a>
-            </div>
-            <div class="d-none d-lg-flex align-items-center gap-2 ms-3">
-                <a href="#" class="nav-link nav-link-custom">Sign In</a>
-                <a href="#" class="btn btn-nav-cta">Book Appointment</a>
-            </div>
-            <button class="d-lg-none border-0 bg-transparent fs-5" id="mobileMenuBtn" aria-label="Open menu">
-                <i class="fas fa-bars" style="color:var(--dark);"></i>
-            </button>
-        </div>
-    </nav>
-    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
-    <div class="mobile-menu-panel" id="mobilePanel">
-        <div class="d-flex justify-content-between align-items-center">
-            <span class="navbar-brand-text" style="font-size:1.25rem;">Medi<span>Care</span></span>
-            <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
-        </div>
-        <ul class="mobile-nav-links">
-            <li><a href="#">Features</a></li>
-            <li><a href="#">How It Works</a></li>
-            <li><a href="#">Specialties</a></li>
-            <li><a href="#">Doctors</a></li>
-            <li><a href="#">Reviews</a></li>
-            <li><a href="#">Sign In</a></li>
-        </ul>
-        <a href="#" class="btn btn-nav-cta w-100 text-center">Book Appointment</a>
-    </div>
+    <x-navbar />
 
     <!-- PAGE HERO -->
     <section class="page-hero">
@@ -354,6 +320,7 @@
     <!-- FILTER BAR -->
     <div class="container">
         <div class="filter-bar" id="filterBar">
+         
             <div class="row g-2 align-items-end">
                 <div class="col-md-3">
                     <div class="filter-input-group">
@@ -366,14 +333,9 @@
                         <i class="fas fa-stethoscope"></i>
                         <select id="filterSpecialty">
                             <option value="">All Specialties</option>
-                            <option value="Cardiology">Cardiology</option>
-                            <option value="Neurology">Neurology</option>
-                            <option value="Dermatology">Dermatology</option>
-                            <option value="Orthopedics">Orthopedics</option>
-                            <option value="Pediatrics">Pediatrics</option>
-                            <option value="Ophthalmology">Ophthalmology</option>
-                            <option value="Dental">Dental</option>
-                            <option value="Pulmonology">Pulmonology</option>
+                            @foreach($specialties as $item)
+                                <option option="{{ $item }}">{{ $item }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -434,13 +396,18 @@
                         <!-- Specialty -->
                         <div class="filter-section">
                             <div class="filter-section-title"><i class="fas fa-stethoscope"></i> Specialty</div>
-                            <label class="filter-check"><input type="checkbox" data-filter="specialty" value="Cardiology"><span class="checkmark"><i class="fas fa-check"></i></span> Cardiology <span class="count">3</span></label>
-                            <label class="filter-check"><input type="checkbox" data-filter="specialty" value="Neurology"><span class="checkmark"><i class="fas fa-check"></i></span> Neurology <span class="count">2</span></label>
+                            @foreach($specialties as $item) 
+                                <label class="filter-check">
+                                    <input type="checkbox" data-filter="specialty" value="{{ $item }}">
+                                    <span class="checkmark"><i class="fas fa-check"></i></span> {{ $item }} <span class="count">3</span>
+                                </label>
+                            @endforeach
+                            {{-- <label class="filter-check"><input type="checkbox" data-filter="specialty" value="Neurology"><span class="checkmark"><i class="fas fa-check"></i></span> Neurology <span class="count">2</span></label>
                             <label class="filter-check"><input type="checkbox" data-filter="specialty" value="Dermatology"><span class="checkmark"><i class="fas fa-check"></i></span> Dermatology <span class="count">2</span></label>
                             <label class="filter-check"><input type="checkbox" data-filter="specialty" value="Orthopedics"><span class="checkmark"><i class="fas fa-check"></i></span> Orthopedics <span class="count">2</span></label>
                             <label class="filter-check"><input type="checkbox" data-filter="specialty" value="Pediatrics"><span class="checkmark"><i class="fas fa-check"></i></span> Pediatrics <span class="count">1</span></label>
                             <label class="filter-check"><input type="checkbox" data-filter="specialty" value="Ophthalmology"><span class="checkmark"><i class="fas fa-check"></i></span> Ophthalmology <span class="count">1</span></label>
-                            <label class="filter-check"><input type="checkbox" data-filter="specialty" value="Dental"><span class="checkmark"><i class="fas fa-check"></i></span> Dental <span class="count">1</span></label>
+                            <label class="filter-check"><input type="checkbox" data-filter="specialty" value="Dental"><span class="checkmark"><i class="fas fa-check"></i></span> Dental <span class="count">1</span></label>--}}
                         </div>
 
                         <!-- Rating -->
@@ -530,62 +497,41 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="footer-section">
-        <div class="container">
-            <div class="row g-4 g-lg-5">
-                <div class="col-lg-4">
-                    <div class="footer-brand">Medi<span>Care</span></div>
-                    <p class="footer-desc">Transforming healthcare access through technology. Book appointments, consult doctors online, and manage your health — all in one place.</p>
-                    <div class="footer-socials">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-2">
-                    <div class="footer-heading">Quick Links</div>
-                    <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Find Doctors</a></li>
-                        <li><a href="#">Specialties</a></li>
-                        <li><a href="#">Teleconsult</a></li>
-                        <li><a href="#">Pricing</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-lg-2">
-                    <div class="footer-heading">For Patients</div>
-                    <ul class="footer-links">
-                        <li><a href="#">My Appointments</a></li>
-                        <li><a href="#">Medical Records</a></li>
-                        <li><a href="#">Prescriptions</a></li>
-                        <li><a href="#">Health Blog</a></li>
-                        <li><a href="#">FAQs</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <div class="footer-heading">Contact Us</div>
-                    <div class="footer-contact-item"><i class="fas fa-location-dot"></i><span>123 Healthcare Blvd, Suite 400,<br>New York, NY 10001</span></div>
-                    <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>support@medicare.com</span></div>
-                    <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+1 (800) 123-4567</span></div>
-                    <div class="footer-contact-item"><i class="fas fa-clock"></i><span>Mon — Sat: 8:00 AM — 10:00 PM</span></div>
-                </div>
-            </div>
-            <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-                <span>2025 MediCare. All rights reserved.</span>
-                <span><a href="#">Privacy Policy</a> &middot; <a href="#">Terms of Service</a> &middot; <a href="#">HIPAA Compliance</a></span>
-            </div>
-        </div>
-    </footer>
+    <x-footer />
 
-    <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-    <div class="custom-toast" id="customToast">
-        <div class="toast-icon success"><i class="fas fa-check"></i></div>
-        <span id="toastMessage">Action completed!</span>
-    </div>
+    @php
+        $doctorsList = $doctors->getCollection()->map(function ($doctor) {
+            $profile = $doctor->profile;
+            $meta = $profile?->meta ?? [];
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            return [
+                'id' => $doctor->id,
+                'name' =>  $doctor->name,
+                'specialty' => $meta['department'] ?? 'General Physician',
+                'sub' => $doctor['sub'] ?? 'Doctor',
+                'rating' => (float) ($doctor['rating'] ?? 0),
+                'experience' => (int) ($doctor['experience'] ?? 0),
+                'fee' => (float) ($doctor['consultation_fee'] ?? 0),
+                'location' => $doctor['location'] ?? 'Not specified',
+                'gender' => $doctor?->gender ?? '',
+                'available' => (bool) ($doctor['available'] ?? false),
+                'video' => (bool) ($doctor['video_consult'] ?? false),
+                'tags' => $doctor['tags'] ?? [],
+                'img' => $doctor['img']?->avatar
+                    ? asset('storage/' . $profile->avatar)
+                    : asset('images/default-doctor.png'),
+            ];
+        })->values();
+
+        dd($doctorsList);
+    @endphp
+
+    <script>
+        const doctors = @json($doctorsList);
+        const specialitiesList = @json($specialties);
+        console.log(specialitiesList);
+    </script>
+
     <script>
         // ===== Toast =====
         function showToast(m, t = 'success') {
@@ -630,20 +576,20 @@
         sidebarBackdrop.addEventListener('click', closeSidebar);
 
         // ===== DOCTOR DATA =====
-        const doctors = [
-            { id:1, name:"Dr. Sarah Mitchell", specialty:"Cardiology", sub:"Interventional Cardiologist", rating:4.9, experience:15, fee:150, location:"New York", gender:"Female", available:true, video:true, tags:["Heart Disease","Hypertension","ECG"], img:"doc-sarah" },
-            { id:2, name:"Dr. James Carter", specialty:"Neurology", sub:"Consultant Neurologist", rating:4.8, experience:12, fee:180, location:"Los Angeles", gender:"Male", available:true, video:true, tags:["Migraine","Epilepsy","Stroke"], img:"doc-james" },
-            { id:3, name:"Dr. Emily Zhang", specialty:"Dermatology", sub:"Cosmetic Dermatologist", rating:5.0, experience:10, fee:120, location:"New York", gender:"Female", available:true, video:false, tags:["Acne","Skin Cancer","Botox"], img:"doc-emily" },
-            { id:4, name:"Dr. Michael Brooks", specialty:"Orthopedics", sub:"Orthopedic Surgeon", rating:4.7, experience:18, fee:200, location:"Chicago", gender:"Male", available:false, video:false, tags:["Joint Replacement","Sports Injury","Spine"], img:"doc-michael" },
-            { id:5, name:"Dr. Aisha Patel", specialty:"Pediatrics", sub:"General Pediatrician", rating:4.9, experience:8, fee:90, location:"Houston", gender:"Female", available:true, video:true, tags:["Vaccinations","Growth","Nutrition"], img:"doc-aisha" },
-            { id:6, name:"Dr. Robert Kim", specialty:"Cardiology", sub:"Electrophysiologist", rating:4.6, experience:14, fee:175, location:"Los Angeles", gender:"Male", available:true, video:true, tags:["Arrhythmia","Pacemaker","AFib"], img:"doc-robert" },
-            { id:7, name:"Dr. Laura Mendez", specialty:"Ophthalmology", sub:"Retina Specialist", rating:4.8, experience:11, fee:160, location:"Miami", gender:"Female", available:false, video:false, tags:["Retina","LASIK","Glaucoma"], img:"doc-laura" },
-            { id:8, name:"Dr. David Okafor", specialty:"Dental", sub:"Oral & Maxillofacial Surgeon", rating:4.5, experience:9, fee:95, location:"Chicago", gender:"Male", available:true, video:false, tags:["Wisdom Teeth","Implants","Braces"], img:"doc-david" },
-            { id:9, name:"Dr. Nina Volkov", specialty:"Neurology", sub:"Movement Disorder Specialist", rating:4.9, experience:16, fee:220, location:"New York", gender:"Female", available:true, video:true, tags:["Parkinson's","Tremor","Dystonia"], img:"doc-nina" },
-            { id:10, name:"Dr. Carlos Rivera", specialty:"Dermatology", sub:"Clinical Dermatologist", rating:4.4, experience:7, fee:100, location:"Houston", gender:"Male", available:false, video:false, tags:["Psoriasis","Eczema","Hair Loss"], img:"doc-carlos" },
-            { id:11, name:"Dr. Hannah Lee", specialty:"Orthopedics", sub:"Sports Medicine Specialist", rating:4.8, experience:13, fee:170, location:"Los Angeles", gender:"Female", available:true, video:true, tags:["ACL","Fractures","Rehab"], img:"doc-hannah" },
-            { id:12, name:"Dr. Thomas Wright", specialty:"Pulmonology", sub:"Critical Care Pulmonologist", rating:4.7, experience:20, fee:190, location:"New York", gender:"Male", available:true, video:true, tags:["Asthma","COPD","COVID-19"], img:"doc-thomas" },
-        ];
+        // const doctors = [
+        //     { id:1, name:"Dr. Sarah Mitchell", specialty:"Cardiology", sub:"Interventional Cardiologist", rating:4.9, experience:15, fee:150, location:"New York", gender:"Female", available:true, video:true, tags:["Heart Disease","Hypertension","ECG"], img:"doc-sarah" },
+        //     { id:2, name:"Dr. James Carter", specialty:"Neurology", sub:"Consultant Neurologist", rating:4.8, experience:12, fee:180, location:"Los Angeles", gender:"Male", available:true, video:true, tags:["Migraine","Epilepsy","Stroke"], img:"doc-james" },
+        //     { id:3, name:"Dr. Emily Zhang", specialty:"Dermatology", sub:"Cosmetic Dermatologist", rating:5.0, experience:10, fee:120, location:"New York", gender:"Female", available:true, video:false, tags:["Acne","Skin Cancer","Botox"], img:"doc-emily" },
+        //     { id:4, name:"Dr. Michael Brooks", specialty:"Orthopedics", sub:"Orthopedic Surgeon", rating:4.7, experience:18, fee:200, location:"Chicago", gender:"Male", available:false, video:false, tags:["Joint Replacement","Sports Injury","Spine"], img:"doc-michael" },
+        //     { id:5, name:"Dr. Aisha Patel", specialty:"Pediatrics", sub:"General Pediatrician", rating:4.9, experience:8, fee:90, location:"Houston", gender:"Female", available:true, video:true, tags:["Vaccinations","Growth","Nutrition"], img:"doc-aisha" },
+        //     { id:6, name:"Dr. Robert Kim", specialty:"Cardiology", sub:"Electrophysiologist", rating:4.6, experience:14, fee:175, location:"Los Angeles", gender:"Male", available:true, video:true, tags:["Arrhythmia","Pacemaker","AFib"], img:"doc-robert" },
+        //     { id:7, name:"Dr. Laura Mendez", specialty:"Ophthalmology", sub:"Retina Specialist", rating:4.8, experience:11, fee:160, location:"Miami", gender:"Female", available:false, video:false, tags:["Retina","LASIK","Glaucoma"], img:"doc-laura" },
+        //     { id:8, name:"Dr. David Okafor", specialty:"Dental", sub:"Oral & Maxillofacial Surgeon", rating:4.5, experience:9, fee:95, location:"Chicago", gender:"Male", available:true, video:false, tags:["Wisdom Teeth","Implants","Braces"], img:"doc-david" },
+        //     { id:9, name:"Dr. Nina Volkov", specialty:"Neurology", sub:"Movement Disorder Specialist", rating:4.9, experience:16, fee:220, location:"New York", gender:"Female", available:true, video:true, tags:["Parkinson's","Tremor","Dystonia"], img:"doc-nina" },
+        //     { id:10, name:"Dr. Carlos Rivera", specialty:"Dermatology", sub:"Clinical Dermatologist", rating:4.4, experience:7, fee:100, location:"Houston", gender:"Male", available:false, video:false, tags:["Psoriasis","Eczema","Hair Loss"], img:"doc-carlos" },
+        //     { id:11, name:"Dr. Hannah Lee", specialty:"Orthopedics", sub:"Sports Medicine Specialist", rating:4.8, experience:13, fee:170, location:"Los Angeles", gender:"Female", available:true, video:true, tags:["ACL","Fractures","Rehab"], img:"doc-hannah" },
+        //     { id:12, name:"Dr. Thomas Wright", specialty:"Pulmonology", sub:"Critical Care Pulmonologist", rating:4.7, experience:20, fee:190, location:"New York", gender:"Male", available:true, video:true, tags:["Asthma","COPD","COVID-19"], img:"doc-thomas" },
+        // ];
 
         // ===== STATE =====
         let currentView = 'grid';
@@ -750,7 +696,10 @@
                 <div class="${colClass}">
                     <div class="doctor-card${isGrid ? '' : ' list-view'}">
                         <div class="doctor-img-wrap">
-                            <img src="https://picsum.photos/seed/${d.img}/400/480.jpg" alt="${d.name}">
+                            <img src="${d.img}" alt="${d.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="doctor-img-error" style="display: none; width: 100%; height: 100%; background: #f8f9fa; align-items: center; justify-content: center; color: #6c757d; font-size: 0.85rem; border-radius: 8px;">
+                                <i class="fas fa-user-md me-1"></i> Image Unavailable
+                            </div>
                             <div class="doctor-badge-top">${d.specialty}</div>
                             <button class="doctor-fav-btn" data-id="${d.id}" aria-label="Add to favorites"><i class="far fa-heart"></i></button>
                             ${d.available ? '<div class="doctor-available-badge"><span class="dot"></span> Available Today</div>' : ''}

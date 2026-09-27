@@ -17,6 +17,7 @@ class DashboardController extends Controller
         // Retrieve the currently authenticated user
         /** @var \App\Models\User $user */
         $user = Auth::user();
+        
 
         return view('patient.dashboard', [
             'username' => $user->name, // Or $user->username depending on your schema

@@ -66,8 +66,12 @@ body {
 
 
 
-
-
+.auth__layout .thumbnail__box {
+  height: 100vh;
+}
+.patient__profile__form .form-control, .patient__profile__form .form-select {
+  background-color: #fff;
+}
 
 
 

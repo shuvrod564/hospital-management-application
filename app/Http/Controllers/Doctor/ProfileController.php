@@ -10,6 +10,9 @@ class ProfileController extends Controller
 {
     public function index()
     {  
+        // $userId = Auth::id();
+        // dd($userId);
+        // die();
         $profile = Profile::firstOrCreate(['user_id' => Auth::id()]); 
         return view('doctor.profile.index', compact('profile'));
     } 

@@ -18,9 +18,9 @@
         <div class="alert alert-danger d-inline-flex align-items-center gap-3 ms-auto"><i data-lucide="badge-check"></i> {{ session('error') }}</div>
     @endif
 
-    <div class="container py-5" style="max-width: 1100px;">
+    <div class="container py-5">
         <!-- Added route and method -->
-        <form method="POST" action="{{ route('user.profile.manage') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('user.profile.manage') }}" enctype="multipart/form-data" class="patient__profile__form">
             @csrf
             @if(isset($profile)) @method('PUT') @endif
 
@@ -159,7 +159,20 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label fw-medium">Allergies</label>
-                            <textarea name="allergies" rows="3" class="form-control" placeholder="List all medication, food, or environmental allergies...">{{ old('allergies', $profile->getMeta('allergies')) }}</textarea>
+                            @php
+                                $allergies = old('allergies', $profile->getMeta('allergies'));
+
+                                if (is_array($allergies)) {
+                                    $allergies = implode(', ', $allergies);
+                                }
+                            @endphp
+
+                            <textarea
+                                name="allergies"
+                                rows="3"
+                                class="form-control"
+                                placeholder="List all medication, food, or environmental allergies..."
+                            >{{ $allergies ?? '' }}</textarea>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label fw-medium">Chronic Conditions</label>

@@ -10,6 +10,7 @@ use App\Http\Controllers\Doctor\AppointmentController as DoctorAppointmentContro
 use App\Http\Controllers\Doctor\ProfileController as DoctorProfileController;
 use App\Http\Controllers\Doctor\DashboardController as DoctorDashboardController;
 use App\Http\Controllers\Doctor\PatientController as DoctorPatientController;
+use App\Http\Controllers\Doctor\FindDoctorController;
 
  
 
@@ -18,13 +19,12 @@ use App\Http\Controllers\Doctor\PatientController as DoctorPatientController;
 
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/doctors', function () {
-    return view('doctor');
-});
+})->name('frontend.home');
+Route::get('/doctors', [FindDoctorController::class, 'index'])
+    ->name('frontend.doctors');
 Route::get('/about-us', function () {
     return view('about-us');
-});
+})->name('frontend.about-us');
 Route::get('/review', function () {
     return view('review');
 });
@@ -88,9 +88,7 @@ Route::prefix('user')->group(function () {
 | DEFAULT BREEZE ROUTES (Can be removed if you only want custom logins)
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () {
-    return view('welcome');
-});
+ 
  
 
 require __DIR__.'/auth.php';

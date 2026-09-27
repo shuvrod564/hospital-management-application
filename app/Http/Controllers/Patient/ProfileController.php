@@ -12,6 +12,7 @@ class ProfileController extends Controller
 {
     public function index()
     {  
+        
         $profile = Profile::firstOrCreate(['user_id' => Auth::id()]);
         return view('patient.profile.index', compact('profile')); 
     } 
@@ -20,7 +21,7 @@ class ProfileController extends Controller
     {
         $user = User::where('id', Auth::id())->first();
         $profile = Profile::firstOrCreate(['user_id' => Auth::id()]);
-        print_r($user);
+        // print_r($user);
         return view('patient.profile.manage', compact('profile')); 
     }
 

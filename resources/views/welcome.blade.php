@@ -1236,44 +1236,8 @@
 <body>
 
     <!-- ===== NAVBAR ===== -->
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand navbar-brand-text" href="#">Medi<span>Care</span></a>
-            <div class="d-none d-lg-flex align-items-center gap-1 ms-auto">
-                <a href="#features" class="nav-link nav-link-custom">Features</a>
-                <a href="#how-it-works" class="nav-link nav-link-custom">How It Works</a>
-                <a href="#specialties" class="nav-link nav-link-custom">Specialties</a>
-                <a href="#doctors" class="nav-link nav-link-custom">Doctors</a>
-                <a href="#testimonials" class="nav-link nav-link-custom">Reviews</a>
-            </div>
-            <div class="d-none d-lg-flex align-items-center gap-2 ms-3">
-                <a href="#" class="nav-link nav-link-custom">Sign In</a>
-                <a href="#" class="btn btn-nav-cta">Book Appointment</a>
-            </div>
-            <!-- Mobile hamburger -->
-            <button class="d-lg-none border-0 bg-transparent fs-5" id="mobileMenuBtn" aria-label="Open menu">
-                <i class="fas fa-bars" style="color: var(--dark);"></i>
-            </button>
-        </div>
-    </nav>
+    <x-navbar />
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
-    <div class="mobile-menu-panel" id="mobilePanel">
-        <div class="d-flex justify-content-between align-items-center">
-            <span class="navbar-brand-text" style="font-size:1.25rem;">Medi<span>Care</span></span>
-            <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
-        </div>
-        <ul class="mobile-nav-links">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#specialties">Specialties</a></li>
-            <li><a href="#doctors">Doctors</a></li>
-            <li><a href="#testimonials">Reviews</a></li>
-            <li><a href="#">Sign In</a></li>
-        </ul>
-        <a href="#" class="btn btn-nav-cta w-100 text-center">Book Appointment</a>
-    </div>
 
     <!-- ===== HERO ===== -->
     <section class="hero-section" id="hero">
@@ -1318,6 +1282,72 @@
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1 hero-card-wrap">
+                    <form action="{{ route('frontend.doctors') }}"
+      method="GET"
+      class="row g-3 align-items-end">
+
+    {{-- Doctor name --}}
+    <div class="col-lg-4">
+        <label for="filterSearch" class="form-label">
+            Doctor name
+        </label>
+
+        <input
+            type="text"
+            name="search"
+            id="filterSearch"
+            class="form-control"
+            placeholder="Search doctor..."
+            value="{{ request('search') }}"
+        >
+    </div>
+
+    {{-- Specialty --}}
+    <div class="col-lg-3">
+        <label for="filterSpecialty" class="form-label">
+            Specialty
+        </label>
+
+        <select name="specialty"
+                id="filterSpecialty"
+                class="form-select">
+
+            <option value="">All specialties</option>
+
+            @foreach ($specialties as $specialty)
+                <option value="{{ $specialty }}"
+                    @selected(request('specialty') === $specialty)>
+                    {{ $specialty }}
+                </option>
+            @endforeach
+        </select>
+    </div>
+
+    {{-- Location --}}
+    <div class="col-lg-3">
+        <label for="filterLocation" class="form-label">
+            Location
+        </label>
+
+        <input
+            type="text"
+            name="location"
+            id="filterLocation"
+            class="form-control"
+            placeholder="e.g. Dhaka"
+            value="{{ request('location') }}"
+        >
+    </div>
+
+    {{-- Search button --}}
+    <div class="col-lg-2 d-grid">
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-search me-1"></i>
+            Find Doctors
+        </button>
+    </div>
+
+</form>
                     <div class="hero-booking-card">
                         <h5>Find Your Doctor</h5>
                         <p>Search by name, specialty, or condition</p>

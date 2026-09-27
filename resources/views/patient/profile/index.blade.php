@@ -25,6 +25,7 @@
                     </div>
                 @endif
                 
+                
             </div><!--end::col--> 
             
             <div class="col-lg-8 col-xxl-9">
